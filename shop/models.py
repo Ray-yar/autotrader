@@ -1,8 +1,11 @@
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
+
+
 # Create your models here.
 class Vehicle(models.Model):
     make = models.CharField(max_length=128, blank=False)
@@ -27,3 +30,15 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return f"{self.make} {self.model} {self.year}"
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    text = models.TextField()
+    approved = models.BooleanField(default=0)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return self.title
+    
