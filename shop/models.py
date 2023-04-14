@@ -1,4 +1,4 @@
-import datetime
+import html
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -30,6 +30,10 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return f"{self.make} {self.model} {self.year}"
+
+    # def __str__(self):
+    #     return html.escape(self.content)
+        
 
 
 class Review(models.Model):

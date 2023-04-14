@@ -18,7 +18,7 @@ from django.urls import path, include
 from shop.views import VehicleView
 
 urlpatterns = [
-    path('/', VehicleView, 'home'),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('', include('shop.urls'), name='blog_urls'),
 ]
