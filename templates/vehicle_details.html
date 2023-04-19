@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-6">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="white-box text-center">
                         {% if "placeholder" in vehicle.featured_photo.url %}
                         <img class="card-img-top"
@@ -14,7 +14,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7 col-sm-6">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <h4 class="box-title mt-4">{{ vehicle.make }} {{vehicle.model}} {{ vehicle.year }}</h4>
                     <p>{{ vehicle.content | safe }}</p>
                     <table style="width:100%;font-size: 20px;">
