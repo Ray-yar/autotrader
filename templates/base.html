@@ -58,6 +58,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
+                {% if commented %}
+                    <div class="alert alert-success alert-dismissible fade show" id="msg1" role="alert">
+                        Your comment successfully saved please wait our manager will release it after a review.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -83,6 +89,12 @@
     <script>
         setTimeout(function () {
             let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2500);
+
+        setTimeout(function () {
+            let messages = document.getElementById('msg1');
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 2500);
