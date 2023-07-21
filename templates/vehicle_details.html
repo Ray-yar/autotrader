@@ -9,10 +9,9 @@
                 <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="white-box text-center">
                         {% if "placeholder" in vehicle.featured_photo.url %}
-                        <img class="card-img-top"
-                            src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                        <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"  alt="Vehicle Photo">
                         {% else %}
-                        <img class="card-img-top" style="object-fit: cover;" src=" {{ vehicle.featured_photo.url }}">
+                        <img class="card-img-top" style="object-fit: cover;" src=" {{ vehicle.featured_photo.url }}"  alt="Vehicle Photo">
                         {% endif %}
                     </div>
                 </div>

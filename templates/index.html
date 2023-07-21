@@ -11,10 +11,10 @@
                 {% for vcl in vehicle_list %}
                 <div class="card col-sm-6 col-md-4 col-lg-3 p-3">
                     {% if "placeholder" in vcl.featured_photo.url %}
-                    <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                    <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg"  alt="Vehicle Photo">
                     {% else %}
                     <img class="card-img-top" style="height: 230px;object-fit: cover;"
-                        src=" {{ vcl.featured_photo.url }}">
+                        src=" {{ vcl.featured_photo.url }}" alt="Vehicle Photo">
                     {% endif %}
 
                     <div class="card-body">
@@ -74,7 +74,7 @@
                             <tr>
                                 <td>
                                     <h6 style="margin-top: 20px;">Our Price ${{vcl.price}}</h6>
-                                    <h6 style="margin-top: -10px;"></h6>Reg Price<del class="text-danger"> ${{vcl.reg_price}}</del></h6>
+                                    <h6 style="margin-top: -10px;">Reg Price<del class="text-danger"> ${{vcl.reg_price}}</del></h6>
                                 </td>
                                 <td>
                                     <a href="{% url 'vehicle_detail' vcl.id %}" class="btn btn-outline-secondary" style="float: right;margin-top: 18px;">More Details</a>
