@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.views import generic, View
+from django.contrib import messages
 from .models import Vehicle, Review
 from .forms import ReviewForm
 
@@ -39,9 +40,11 @@ class VehicleDetail(View):
             # Editing an existing review
             review = get_object_or_404(Review, id=review_id)
             review_form = ReviewForm(request.POST, instance=review)
+            messages.success(request, "Review updated successfully.")
         else:
             # Inserting a new review
             review_form = ReviewForm(request.POST)
+            messages.success(request, "Review inserted successfully, please wait we will publish it after a quick review.")
 
         if review_form.is_valid():
             review = review_form.save(commit=False)
@@ -56,7 +59,6 @@ class VehicleDetail(View):
             review = None
 
         reviews = vehicle.reviews.filter(approved=True)
-
         return redirect('/'+id +'/')
 
 
@@ -64,8 +66,11 @@ class VehicleDetail(View):
 
         review = get_object_or_404(Review, id=id)
         if not request.user.is_authenticated or review.user != request.user:
+            messages.error(request, "You don't have permission to delete this review.")
             return HttpResponseBadRequest("You don't have permission to delete this review.")
+
         review.delete()
+        messages.success(request, "Review deleted successfully.")
         return HttpResponse("Review deleted successfully.", status=200)
 
 

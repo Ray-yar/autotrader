@@ -26,10 +26,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated and user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}"> <i
-                                class="fa fa-home"></i> Home</a>
-                    </li>
+                        <a class="nav-link active" aria-current="page" href="/admin/"> Admin Panel</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="{% url 'home' %}"> <i class="fa fa-home"></i> Home</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-user"></i> Logout</a>
@@ -57,12 +59,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endfor %}
-                {% if commented %}
-                    <div class="alert alert-success alert-dismissible fade show" id="msg1" role="alert">
-                        Your comment successfully saved please wait our manager will release it after a review.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endif %}
             </div>
         </div>
     </div>
