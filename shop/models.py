@@ -14,6 +14,7 @@ class Vehicle(models.Model):
     body = models.CharField(max_length=128, blank=False)
     year = models.IntegerField()
     fuel = models.CharField(max_length=128)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
     milage = models.IntegerField()
     reg_price = models.DecimalField(max_digits=10, decimal_places=2)
     price = models.DecimalField(max_digits=10, decimal_places=2)

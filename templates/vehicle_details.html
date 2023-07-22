@@ -68,7 +68,7 @@
                             </del>
                         </small>
                     </h2>
-                    <a href="mailto:{{ user.email }}" class="btn btn-primary btn-rounded">
+                    <a href="mailto:{{ vehicle.user.email }}" class="btn btn-primary btn-rounded">
                         <i class="fa fa-envelope"></i>
                         Mail Seller
                     </a>
@@ -128,9 +128,9 @@
                                         <p class="text-muted mt-2">
                                             {{review.text}}
                                         </p>
-                                        {% if user.id == review.user.id  %}
-                                            <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        {% if user.is_authenticated and user == review.user %}
+                                            <button class="btn btn-sm btn-primary edit-button" data-review-id="{{ review.id }}" data-review-title="{{ review.title }}" data-review-text="{{ review.text }}"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger btn-sm delete-button" data-review-id="{{ review.id }}"><i class="fa fa-trash"></i></button>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -140,16 +140,18 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <h3 class="box-title mt-5">Add review</h3>
                     {% if commented %}
                     <p>We are reviewing your comment then we will release it!</p>
                     {% else %}
                     {% if user.is_authenticated %}
-                    <form method="post" class="form-group">
+                    <form method="post" class="form-group" id="review_form">
+                        <input type="hidden" id="id" name="id" value="">
                         {{ review_form | crispy }}
                         {% csrf_token %}
-                        <button class="btn btn-success mt-3 col-md-4" type="submit">Save</button>
+                        <button class="btn btn-success mt-3 col-md-4" id="submit_btn" type="submit">Save</button>
                     </form>
                     {% endif %}
                     {% if user.is_authenticated is False %}
@@ -161,5 +163,63 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+// Function to send the DELETE request
+function deleteReview(reviewId) {
+    fetch(`/review/${reviewId}/delete/`, {
+        method: 'DELETE',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.reload();
+        } else {
+            console.error('Failed to delete review.');
+        }
+    })
+    .catch(error => {
+        console.error('Error during review deletion:', error);
+    });
+}
+
+// Function to get the CSRF token from the cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+
+$(document).ready(function(){
+
+    // Handle Edit Button Click Event
+    $(".edit-button").click(function(){
+        
+        // Get Data
+        reviewId = $(this).attr('data-review-id');
+        reviewTitle = $(this).attr('data-review-title');
+        reviewText = $(this).attr('data-review-text');
+
+        // Set Fetched Data
+        $("#id").val(reviewId);
+        $("#id_title").val(reviewTitle);
+        $("#id_text").val(reviewText);
+        
+    });
+
+    // Handle Delete Button Event
+    $(".delete-button").click(function(){
+        reviewId = $(this).attr('data-review-id');
+        deleteReview(reviewId);
+    }); 
+}); 
+</script>
+
 
 {% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.views import generic, View
 from .models import Vehicle, Review
 from .forms import ReviewForm
@@ -33,21 +33,39 @@ class VehicleDetail(View):
         queryset = Vehicle.objects.filter(status=1)
         vehicle = get_object_or_404(queryset, id=id)
 
-        review = ReviewForm(request.POST)
-
-        if(review.is_valid()):
-            review.instance.vcl = vehicle
-            review.instance.user = request.user
-            review.save()
+        # Check if the review ID is present in the form data
+        review_id = request.POST.get('id')
+        if review_id:
+            # Editing an existing review
+            review = get_object_or_404(Review, id=review_id)
+            review_form = ReviewForm(request.POST, instance=review)
         else:
-            review = ReviewForm()
+            # Inserting a new review
+            review_form = ReviewForm(request.POST)
 
-        return render(
-            request, 
-            'vehicle_details.html',
-            {
-                'vehicle' : vehicle,
-                'commented' : True,
-                'review_form' : ReviewForm()
-            },
-        )
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.vcl = vehicle
+            review.user = request.user
+            review.save()
+
+            # Clear the form after successful submission
+            review_form = ReviewForm()
+        else:
+            # If the form is not valid, display errors and keep the form data
+            review = None
+
+        reviews = vehicle.reviews.filter(approved=True)
+
+        return redirect('/'+id +'/')
+
+
+    def delete(self, request, id, *args, **kwargs):
+
+        review = get_object_or_404(Review, id=id)
+        if not request.user.is_authenticated or review.user != request.user:
+            return HttpResponseBadRequest("You don't have permission to delete this review.")
+        review.delete()
+        return HttpResponse("Review deleted successfully.", status=200)
+
+
