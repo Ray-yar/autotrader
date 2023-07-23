@@ -26,10 +26,11 @@ AutoTrader is a popular app for buying and selling vehicles, providing a compreh
 * As a normal user i can see the list of vehicles so that i could buy one.
 * As a normal user i can access to pagination so that see list of vehicles very fast.
 * As a normal user i can see the details of each vehicle so that i could know all details about that.
-* As a normal user i can call to the owner of the vehicle so that i could make a deal with him/her.
+* As a normal user i can contact to the owner of the vehicle so that i could make a deal with him/her.
+* As a normal user i can contact to the owner of the site so that i could ask any questions i have.
 
-### Implemented Agile Project in GitHub
-![alt text](docs/agile.PNG "User Stories") 
+### Implemented Agile in GitHub
+![alt text](docs/agile.png "User Stories") 
 
 ## Features
 According to the mentined point at the top the users can use the website with these features:
@@ -98,23 +99,40 @@ The site's HTML, CSS and Python codes are validated by the W3C Markup Validation
 
 * HTML HTML docs were run through the W3C Markup validation and passed the validation.
 
-  * Html error report:
-  ![alt text](docs/html.PNG "HTML Error") 
+  * Html success report:
+  ![alt text](docs/html.png "Fixed Report") 
 
   * Css All CSS files ran through CSS jigsaw validator with some bootstrap errors that can be ignored.
   
 ### Manual Testing
 1. **Site testing:** I manually tested the site's navigation menu links and all buttons accross the site's all pages that all work fine in terms of loading and redirecting URLs to the relavant pages.
 
-2. **Register form testing:** I manually tested the register form's password fields. The password needs to meet certain requirements when user regsiter an account.
+2. **Account Registeration Testing:** I manually tested the register form and entered needed fields. The password needs to meet certain requirements when user regsiter an account.
 
 3. **User exists:** I manually tested that it's not possible to register an account with the same username or the same email address.
+![alt text](docs/exist.png "Exist User") 
 
-4. **Login form testing:** I manually tested the login form. The username and the password needs to be the same as user specified when registering an account.
+4. **Login Account** I manually tested the login form. The username and the password needs to be the same as user specified when registering an account.
 
-5. **New Vehicle form testing:** I manaually tested vehicle form and the vehicle will be inserted when form filled correctly.
+5. **Post New Vehicle:** I manaually tested vehicle form and the vehicle will be inserted when form filled correctly.
 
-6. **Add Review Testing:** I manaually tested adding review form and it works fine after the adding review for specific vehicle.
+6. **See List of Posts:** I manaually tested loading list of vehicles after insertion and the vehicles will be loaded after registeration.
+![alt text](docs/list.png "Posts") 
+
+7. **Add, Read, Edit and Delete Reviews:** I manaually tested adding review form and it works fine, and i manaually tested edit and delete, they works like they have to work.
+![alt text](docs/review.png "Review Form") 
+
+8. **Site Paggination:** I manaually tested pagination and when i added multiple vehicles it loads 8 vehicles per each page.
+![alt text](docs/pagination.png "Mail Seller") 
+
+9. **Mail Seller:** I manaually tested mail to seller button and it redirect me to the pc email screen to send email.
+![alt text](docs/mail.png "Mail Seller") 
+
+10. **Add contact form:** I manaually tested contact form and validations, it adds new feedback when form fills properly.
+ ![alt text](docs/contact.png "Details") 
+
+11. **See vehicle details:** I manaually tested vehicles details screen it shows every thing properly and responsive.
+ ![alt text](docs/details.png "Details") 
 
 ## Deployment:
 This project was deployed to Heroku. "Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps."- Heroku.
