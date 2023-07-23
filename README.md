@@ -7,6 +7,7 @@ AutoTrader is a popular app for buying and selling vehicles, providing a compreh
 ![alt text](docs/multi_platform1.png "Responsive Image") 
 
 ## Requirements
+Admins are posible to implement crud on all posts, reviews and user. They have the complete permission for each of them.
 
 1. if you want to login as admin please enter the following username and password to login
     * Username: allah
