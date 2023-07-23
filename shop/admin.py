@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Vehicle, Review
+from .models import Vehicle, Review, Contact
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -28,3 +28,11 @@ class ReviewAdmin(admin.ModelAdmin):
 
     def approve_review(self, request, queryset):
         queryset.update(approved=True)
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    
+    list_filter = ('subject',)
+    search_fields = ['subject',]
+    list_display = ('subject',)
+    summernote_fields = ('text')

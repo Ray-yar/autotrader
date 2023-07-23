@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.views import generic, View
 from django.contrib import messages
 from .models import Vehicle, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, ContactForm
 
 # Create your views here.
 class VehicleView(generic.ListView):
@@ -10,6 +10,28 @@ class VehicleView(generic.ListView):
     object = Vehicle.objects.filter(status=1).order_by('created_at')
     template_name = "index.html"
     paginate_by = 8
+
+
+class ContactUs(View):
+    # Load Contact Screen Page
+    def get(self, request, *args, **keyargs):
+        return render(
+            request, 
+            'contact_us.html', 
+            {
+                'contact_form' : ContactForm()
+            },
+        )
+    
+    # Handle Post request 
+    def post(self, request, *args, **keyargs):
+        contact_from = ContactForm(request.POST)
+        if contact_from.is_valid():
+            contact_from.save()
+            messages.success(request, "Your Message inserted successfully, thank you for your feedback!")
+        else:
+            messages.success(request, "Something went wrong! Please try again.")
+        return redirect('/contact/')
 
 
 class VehicleDetail(View):

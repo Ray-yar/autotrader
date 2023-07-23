@@ -1,5 +1,5 @@
 from django import forms
-from .models import Review
+from .models import Review, Contact
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -7,6 +7,16 @@ class ReviewForm(forms.ModelForm):
         fields = ('title', 'text',)
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'text': forms.Textarea(attrs={'class': 'form-control'})
+        }
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('subject', 'email', 'text',)
+        widgets = {
+            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'type': 'email'}),
             'text': forms.Textarea(attrs={'class': 'form-control'})
         }
 

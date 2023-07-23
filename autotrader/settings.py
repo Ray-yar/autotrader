@@ -33,7 +33,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['autotrader.herokuapp.com', 'localhost', '127.0.0.1', "8000-rayyar-autotrader-sfkqxmk8yrz.ws-us102.gitpod.io"]
+ALLOWED_HOSTS = ['autotrader.herokuapp.com', 'localhost', '127.0.0.1', "8000-rayyar-autotrader-hyh607f3hjo.ws-us102.gitpod.io"]
 
 
 # Application definition
