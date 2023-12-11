@@ -1,4 +1,4 @@
-AutoTrader
+## AutoTrader
 
 AutoTrader is a popular app for buying and selling vehicles, providing a comprehensive solution for car buyers and sellers, with a wide range of features and services.
 
@@ -20,15 +20,15 @@ Admins are posible to implement crud on all posts, reviews and user. They have t
 * As an admin I can access admin panel so that I can approve or reject reviews from users.
 
 ### LoggedIn User
-* As a loggedin user i can add my review for a specific vehicle.
-* As a loggedin user i can edit, delete, and read my review in vehicle details page.
+* As a loggedin user I can add my review for a specific vehicle.
+* As a loggedin user I can edit, delete, and read my review in vehicle details page.
 
 ### Normal User
-* As a normal user i can see the list of vehicles so that i could buy one.
-* As a normal user i can access to pagination so that see list of vehicles very fast.
-* As a normal user i can see the details of each vehicle so that i could know all details about that.
-* As a normal user i can contact to the owner of the vehicle so that i could make a deal with him/her.
-* As a normal user i can contact to the owner of the site so that i could ask any questions i have.
+* As a normal user I can see the list of vehicles so that I could buy one.
+* As a normal user I can access to pagination so that see list of vehicles very fast.
+* As a normal user I can see the details of each vehicle so that I could know all details about that.
+* As a normal user I can contact to the owner of the vehicle so that I could make a deal with him/her.
+* As a normal user I can contact to the owner of the site so that I could ask any questions I have.
 
 ### Implemented Agile in GitHub
 ![alt text](docs/agile.png "User Stories") 
