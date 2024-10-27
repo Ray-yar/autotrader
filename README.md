@@ -2,7 +2,7 @@
 
 AutoTrader is a popular app for buying and selling vehicles, providing a comprehensive solution for car buyers and sellers, with a wide range of features and services.
 
-<a href="https://autotrader.herokuapp.com/" target="_blank">Visit the live project here</a>
+<a href="https://autotradr-a36a8d9b4a3f.herokuapp.com/" target="_blank">Visit the live project here</a>
 
 ![alt text](docs/multi_platform1.png "Responsive Image") 
 
